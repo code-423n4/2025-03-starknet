@@ -1,0 +1,12 @@
+./workspace/apps/perpetuals/contracts/src/tests/components/test_nonce.cairo
+./workspace/apps/perpetuals/contracts/src/tests/components.cairo
+./workspace/apps/perpetuals/contracts/src/tests/constants.cairo
+./workspace/apps/perpetuals/contracts/src/tests/event_test_utils.cairo
+./workspace/apps/perpetuals/contracts/src/tests/flow_tests/flow_tests.cairo
+./workspace/apps/perpetuals/contracts/src/tests/flow_tests/flow_tests_infra.cairo
+./workspace/apps/perpetuals/contracts/src/tests/flow_tests.cairo
+./workspace/apps/perpetuals/contracts/src/tests/mocks/nonce.cairo
+./workspace/apps/perpetuals/contracts/src/tests/mocks.cairo
+./workspace/apps/perpetuals/contracts/src/tests/test_core.cairo
+./workspace/apps/perpetuals/contracts/src/tests/test_utils.cairo
+./workspace/apps/perpetuals/contracts/src/tests.cairo

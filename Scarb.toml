@@ -1,0 +1,19 @@
+[workspace]
+members = ["workspace/apps/perpetuals/contracts"]
+
+[workspace.dependencies]
+starknet = "2.11.0"
+assert_macros = "2.11.0"
+openzeppelin = "1.0.0"
+openzeppelin_testing = "1.0.0"
+snforge_std = "0.34.0"
+snforge_scarb_plugin = "0.34.0"
+starkware_utils = { git = "https://github.com/starkware-libs/starkware-starknet-utils", rev = "cb180ac4d561cb675466b26e8c619d946a5d23c6" }
+
+[scripts]
+test = "snforge test"
+
+[profile.dev.cairo]
+unstable-add-statements-code-locations-debug-info = true
+unstable-add-statements-functions-debug-info = true
+inlining-strategy = "avoid"
