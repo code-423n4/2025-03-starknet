@@ -532,7 +532,7 @@ pub mod AssetsComponent {
             if let Option::Some(synthetic_config) = self.synthetic_config.read(synthetic_id) {
                 let asset_risk_factor_tiers = self.risk_factor_tiers.entry(synthetic_id);
                 let synthetic_value: u128 = price.mul(rhs: balance).abs();
-                let index = if synthetic_value <= synthetic_config.risk_factor_first_tier_boundary {
+                let index = if synthetic_value < synthetic_config.risk_factor_first_tier_boundary {
                     0_u128
                 } else {
                     let tier_size = synthetic_config.risk_factor_tier_size;
