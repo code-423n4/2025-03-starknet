@@ -23,7 +23,15 @@ As such, wardens are encouraged to select the appropriate risk level carefully d
 
 ## Automated Findings / Publicly Known Issues
 
-The 4naly3er report is inapplicable for this contest and there are no explicit known issues. Any issue/behavior that is marked as acknowledged via in-line documentation should be considered out-of-scope for this contest.
+The 4naly3er report is inapplicable for this contest. 
+
+### Fee Ratio Against Quote
+
+During a trade, the code will evaluate the fulfillment of the base token but the fee ratio will be evaluated against the quote token. This approach is intentional as the user should be allowed to pay a higher fee than the order they signed as a more lucrative matching order might be identified that will have a higher fee as well as a higher profit for the user, resulting in a net-positive result for them.
+
+### Implicit Issues
+
+Any issue/behavior that is marked as acknowledged via in-line documentation should be considered out-of-scope for this contest.
 
 # Overview
 
