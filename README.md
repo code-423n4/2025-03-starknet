@@ -1,4 +1,4 @@
-# StarkWare audit details
+# Starknet Perpetual audit details
 - Total Prize Pool: $150,000 in USDC
   - HM awards: up to $140,000 in USDC 
     - If no valid Highs are found, the HM pool is $40,000 in USDC
@@ -276,6 +276,6 @@ snforge test --coverage
 
 ## Miscellaneous
 
-Employees of Starknet and employees' family members are ineligible to participate in this audit.
+Employees of Starknet/Starkware and employees' family members are ineligible to participate in this audit.
 
 Code4rena's rules cannot be overridden by the contents of this README. In case of doubt, please check with C4 staff.
