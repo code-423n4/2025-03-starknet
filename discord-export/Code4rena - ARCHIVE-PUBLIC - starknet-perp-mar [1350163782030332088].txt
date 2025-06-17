@@ -1,0 +1,1490 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-PUBLIC / starknet-perp-mar
+==============================================================
+
+[03/18/2025 14:57] itsmetechjay (pinned)
+👋 Hello and welcome to the $150,000 in USDC **Starknet Perpetual** audit channel!
+
+📆 Audit opens Wednesday, 19 March 2025 20:00 (20:00 UTC) and runs through Wednesday, 09 April 2025 20:00 (20:00 UTC) (21 days).
+
+Please give a warm welcome to the Starknet team, particularly @ishay-starkware, @Oded Naor | StarkWare and @Mohammad - Starkware who will be available for questions either here in the channel or via a PRIVATE thread in the GMT +2 timezone. 
+
+**Notes:**
+- If no valid Highs are found, the HM pool is $40,000 in USDC
+- If no valid Highs or Mediums are found, the HM pool is $0
+
+🤖 **Documentation bot assistance:** For general questions about the codebase, give our documentation bot a try, by tagging `@Docs Wolf` in any thread (private or public) and asking your question. The bot will make its best attempt to answer based on the codebase and documentation, and link you to relevant resources. *Docs Wolf will be available when the audit is live.*
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/audits/2025-03-starknet-perpetual
+
+{Reactions}
+👋 (5) ❤️ 
+
+[03/18/2025 14:57] itsmetechjay
+Pinned a message.
+
+
+[03/19/2025 21:53] marioyordanov
+@ishay-starkware cant build the project via scarb build
+
+
+[03/19/2025 21:54] attentioniayn
+Hi there, it seems that the protocol is related/similar to StarkEx, would it make sense getting familiar with that documentation too since the provided specs are quite dense to start? First time looking at something similar so any resource is welcome ^^
+
+{Reactions}
+👍 
+
+[03/20/2025 04:26] elminnyc99
+The tests not work.  [ERROR] Failed to build test artifacts with Scarb: `scarb` exited with error. How to fix this?
+
+
+[03/20/2025 05:46] neutron_sec
+tests work fine
+
+{Attachments}
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/image-14933.png
+
+
+[03/20/2025 05:58] glightspeed
+According to spec
+> A position is Deleveragable (and also Liquidatable) if its total value is negative.
+
+How can total value be negative? According to the same doc
+> The total value of a position is the sum of the value of the position’s collateral and synthetic assets, expressed in the collateral currency.
+
+
+[03/20/2025 06:22] elminnyc99
+Did you see this error before? I'm new to  starknet.
+
+
+[03/20/2025 06:53] neutron_sec
+nope and i am also new to starknet
+
+
+[03/20/2025 07:01] 0xaudron
+```
+scarb build
+
+    Updating git repository https://github.com/starkware-libs/starkware-starknet-utils
+error: cannot get dependencies of `perpetuals@0.1.0`
+
+Caused by:
+    cannot find package `starknet ^2.11.0`
+```
+
+
+[03/20/2025 07:02] 0xaudron
+this is the error i'm facing. starknet 2.11.0 persist though. Idk, what's the matter. Did anyone fixed it ? 
+@ishay-starkware could you help
+
+
+[03/20/2025 07:05] _k42
+No errors on my side @0xaudron are you using wsl Ubuntu? Make sure every thing is updated 🫡
+
+
+[03/20/2025 07:07] _k42
+I.e run ‘curl –proto '=https' –tlsv1.2 -sSf https://sh.starkup.dev | sh’ again etc
+
+{Reactions}
+👍 
+
+[03/20/2025 07:10] 0xaudron
+I am using - Linux 0xaudron 6.0.0-kali6-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.0.12-1kali1 (2022-12-19) x86_64 GNU/Linux
+
+
+[03/20/2025 07:18] 0xaudron
+can you share your scarb version ?
+
+
+[03/20/2025 07:18] _k42
+Will definitely be dependency conflict issue on your end bro 🙏 all I can say is update, rmv old installations , update again, and try again, good luck my friend!!
+
+
+[03/20/2025 07:19] _k42
+It was my first time installing it so it’s the most up to date version 🧐
+
+{Reactions}
+🫡 
+
+[03/20/2025 07:19] 0xaudron
+```
+scarb 2.10.1 (ea6b66386 2025-02-20)
+cairo: 2.10.1 (https://crates.io/crates/cairo-lang-compiler/2.10.1)
+sierra: 1.7.0
+```
+
+
+[03/20/2025 07:19] 0xaudron
+cool i will try to delete all the starknet related tools and redownload everything from scratch.
+
+
+[03/20/2025 07:19] 0xaudron
+Thanks for the help, men
+
+
+[03/20/2025 07:20] _k42
+That should definitely work 👽
+
+{Reactions}
+🫡 
+
+[03/20/2025 07:20] _k42
+I hope you find many bugs my g!
+
+{Reactions}
+🔥 
+
+[03/20/2025 07:20] 0xaudron
+wish you the same!
+
+{Reactions}
+✅ 🫡 
+
+[03/20/2025 08:01] ishay_starkware
+the balance can be negetive
+
+
+[03/20/2025 08:03] ishay_starkware
+this is the StarkEx docs: https://docs.starkware.co/starkex/perpetual/perpetual_overview.html
+it's not exactly the same it - but it can help you understand the flows
+
+{Embed}
+https://docs.starkware.co/starkex/perpetual/perpetual_overview.html
+StarkEx Perpetual Trading overview :: StarkEx Documentation
+StarkEx Perpetual Trading overview | StarkWare: Bringing scalability, security, and privacy to a blockchain near you.
+
+{Reactions}
+❤️ (6) 
+
+[03/20/2025 10:34] glightspeed
+anyone suffers from high RAM usage by cairo language server?
+
+
+[03/20/2025 10:34] glightspeed
+ram usage is 7.9 GB lol
+
+
+[03/20/2025 10:37] neutron_sec
+yes 24 gb here
+
+{Reactions}
+😂 (3) 😭 (4) 
+
+[03/20/2025 10:52] kalogerone
+8 GB here 😂
+
+
+[03/20/2025 10:52] dhanushhm.
+gm, I am new to cairo. Can any one give commands to setup the repo
+
+
+[03/20/2025 12:48] neutron_sec
+all the time
+24 or 20
+
+{Attachments}
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/image-4B30D.png
+
+
+[03/20/2025 15:50] 7amood_x
+hey guys do i have time to go through the competition as a beginner in cairo? im mostly confident in solidity so im hoping i grasp enough information just to be able to read the code since im already familliar with attack vectors and their patterns so i just wanted to ask if i have enough time to get started with knowing how to read and all
+
+
+[03/20/2025 15:55] thebrittfactor
+This audit runs through April 9th, so there's time 🙂
+If you're just wanting to review for practice, the audit repo is public and can be reviewed. You can join the audit [here](https://code4rena.com/audits/2025-03-starknet-perpetual).
+
+{Reactions}
+💯 (2) 
+
+[03/20/2025 16:05] 0xhiros
+@ishay-starkware could you explain details about `deleverable`, `deleveraged position`, `deleverager position`?
+
+
+[03/20/2025 16:57] 7amood_x
+Hah i appreciate it, i’ll get right to it then
+
+
+[03/20/2025 17:50] ishay_starkware
+deleverage flow can occur when a position total value becomes negative.  The negative tv position is the `deleveraged_position`. In the case of a deleveragable position the system is allowed to match a healthy position (`deleverager_position`) with it. The trade is "blocked" by the `is_fair_deleverage`
+
+
+[03/20/2025 22:49] glightspeed
+i said cairo language server process alone uses 8 gb of ram
+
+{Reactions}
+👍 
+
+[03/21/2025 04:01] 7amood_x
+guys do i need to complete a KYC if i wanna attain any rewards from this contest?
+
+
+[03/21/2025 04:13] 0xaudron
+thank god i upgraded my RAM to 48 gb from 16😂
+
+Else it would have freezer for a lil while
+
+{Reactions}
+👍 
+
+[03/21/2025 04:18] glightspeed
+I don't think code4rena ever enforces KYC, although you need to submit tax info
+
+
+[03/21/2025 04:25] 7amood_x
+My tax info is still under review and it’s been almost a week is that normal?
+
+
+[03/21/2025 06:08] glightspeed
+yes, it should be approved by the comp ends
+
+
+[03/21/2025 07:37] marioyordanov
+@ishay-starkware when I do scarb test I receive the following error: `Error during type specialization of [1511]: Could not specialize type`
+
+
+[03/21/2025 07:47] ishay_starkware
+Never seen such an error - what scarb version do you use?
+
+
+[03/21/2025 07:53] skinneeomeje
+I've been struggling with my 8 gb RAM all day 😭. 
+Scarb please let me in 😭🙏
+
+
+[03/21/2025 08:09] marioyordanov
+2.11.0, before received an error '(mach-o file, but is an incompatible architecture (have 'x86_64', need 'arm64'))' when using `https://sh.starkup.dev | sh` for installation
+
+
+[03/21/2025 08:23] enigmaticauditor2
+Can anybody execute trades on their own? It seems like everything goes through the "operator"
+
+
+[03/21/2025 13:46] anmol.eth
+Hey @ishay-starkware should we refer this docs for flow?
+
+
+[03/21/2025 13:46] anmol.eth
+https://docs.starkware.co/starkex/perpetual/shared/transfer.html
+
+{Embed}
+https://docs.starkware.co/starkex/perpetual/shared/transfer.html
+The transfer flow :: StarkEx Documentation
+The transfer flow | StarkWare: Bringing scalability, security, and privacy to a blockchain near you.
+
+
+[03/21/2025 13:57] ishay_starkware
+This is starkex - it's similar but it's not the same. You can look there to get understanding but there are things that are not the same.
+
+
+[03/21/2025 14:00] anmol.eth
+where are the docs for this project? Should we consider only spec.md md as of now?
+
+
+[03/21/2025 16:01] ishay_starkware
+Yes. You can get info from starkex but the docs should be the source of truth - although there are some things that are not updated there as well.
+
+
+[03/21/2025 18:06] l9baldur
+@ishay-starkware What is collateral quantum ? I didn't see anything explaining this variable in the docs
+
+
+[03/21/2025 18:40] malfurionwhitehat
+Are operator mistakes in scope?
+If not, since this protocol is mostly permissioned, it seems unlikely that realistic High-severity findings will be accepted by the judges.
+Some functions lack thorough input validation, but if operators are assumed to perform these checks offchain, then the majority of issues will be invalid
+
+{Reactions}
+✅ (7) ➕ (2) 
+
+[03/22/2025 00:30] importdev0x
+I'm facing the following error. Does anyone have an idea how to solve it:
+```
+scarb build
+
+    Updating git repository https://github.com/starkware-libs/starkware-starknet-utils
+⠁ git clone --local --config core.autocrlf=false --recurse-submodules /root/.cache/scarb/registry/git/db/star 0sSegmentation fault
+```
+and my scarb version is 2.11.3 .
+
+
+[03/22/2025 03:30] neutron_sec
+```get_collateral_quantum();```
+what is that?
+quantum resistant for quantum computing ?
+
+
+[03/22/2025 05:51] ishay_starkware
+https://docs.starkware.co/starkex/perpetual/shared/asset_quantities_in_starkex.html
+Quantum and resolution factor are the same as in starkex
+
+{Embed}
+https://docs.starkware.co/starkex/perpetual/shared/asset_quantities_in_starkex.html
+Asset quantities in StarkEx :: StarkEx Documentation
+Asset quantities in StarkEx | StarkWare: Bringing scalability, security, and privacy to a blockchain near you.
+
+{Reactions}
+👍 
+
+[03/22/2025 05:52] ishay_starkware
+In our application the quantum must make the minimal collateral unit equals to 10^-6$ 
+So in our case the quantum for USDC will be 1
+
+{Reactions}
+👍 (2) 
+
+[03/22/2025 05:56] ishay_starkware
+Not sure exactly what the operator's mistakes means but in general we assume the operator inputs should be valid - but we do validate the inputs..
+
+{Reactions}
+👍🏻 
+
+[03/22/2025 11:35] mrjorystewartbaxter
+Same error here when running scarb test: `[ERROR] Error during type specialization of `[1533]`: Could not specialize type` Any idea?
+
+
+[03/22/2025 12:02] malfurionwhitehat
+thanks for the quick response
+
+I meant the input validation is not exhaustive, and operator mistakes would cause issues. However, since these bugs would out of scope, it's not worth reporting them.
+
+
+[03/22/2025 12:06] evokid
+No sir i think you got something in a conflict, any inputs that been executed in-scope methods they should be considered as issue to be validated or not. The sponsor already mentioned that.
+
+
+[03/22/2025 12:54] itsmetechjay (pinned)
+ℹ️ Hey all, please welcome @Mohammad - Starkware from the sponsor team who will also be answering questions along with @ishay-starkware.
+
+{Reactions}
+🫡 (4) 🙏 (2) 
+
+[03/22/2025 12:54] itsmetechjay
+Pinned a message.
+
+
+[03/24/2025 04:15] noahfig.eth
+Running into the following error on build `libsnforge_scarb_plugin.so: undefined symbol: __start_linkm2_MACRO_DEFINITIONS_SLICE` any ideas?
+
+
+[03/24/2025 04:26] noahfig.eth
+nvm incorrect rust version  https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html#invalid-rust-version
+
+{Embed}
+https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html
+The Starknet Foundry Book
+Installation
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/foundry-BDC96.png
+
+{Reactions}
+🙏 
+
+[03/24/2025 09:22] cloudellie
+GM wardens - please welcome @Oded Naor | StarkWare, who is also available to answer questions about the codebase.
+
+{Reactions}
+hi5 checkmark 🙏 
+
+[03/24/2025 18:23] alekso1
+Is the doc the source of truth? Feels like the answer is "maybe" which isn't satisfying.
+Otherwise could you let us know what are the "things that are not updated there as well"? Thank you!
+
+
+[03/24/2025 18:34] ishay_starkware
+The answer is yes. But like any other docs there are some inconsistencies that are caused by human error and/or design choices that weren't updated in the doc. If there's anything particular we would happy to answer and help.
+
+
+[03/24/2025 18:35] alekso1
+noted, thanks!
+
+{Reactions}
+🙏 
+
+[03/25/2025 14:03] daveylupes
+Do we write coded POCs for our high findings?
+
+Damn, solidity is better than cairo but seems like this is safe haven
+
+{Reactions}
+😂 (2) 
+
+[03/25/2025 14:25] anmol.eth
+can anyone explain how liquidation works in the system?
+
+
+[03/25/2025 14:26] anmol.eth
+@ishay-starkware
+
+
+[03/25/2025 16:08] onsw11211
+At a high level, similar to the StarkEx flow. You can read more about liquidations in StarkEx here: https://docs.starkware.co/starkex/perpetual/liquidation.html
+
+{Embed}
+https://docs.starkware.co/starkex/perpetual/liquidation.html
+The liquidation flow :: StarkEx Documentation
+The liquidation flow | StarkWare: Bringing scalability, security, and privacy to a blockchain near you.
+
+{Reactions}
+❤️ (2) 
+
+[03/25/2025 16:22] Deleted User
+@Oded Naor | StarkWare   Hey sir, hope you are having a nice one, can we get the audit report from Starknet  staking from CH platform, there are not alot of cairo resources. that would help as @moray5554 said.
+
+
+[03/25/2025 20:11] 0xjarix
+How can I fix this?
+❯ scarb build
+
+error: failed to parse manifest at: /Users/0xjarix/2025-03-starknet/workspace/apps/perpetuals/contracts/Scarb.toml
+
+Caused by:
+    TOML parse error at line 4, column 11
+      |
+    4 | edition = "2024_07"
+      |           ^^^^^^^^^
+    unknown variant `2024_07`, expected one of `2023_01`, `2023_10`, `2023_11`
+
+
+[03/25/2025 21:08] _leogold
+Are you using Bash as your shell
+
+
+[03/25/2025 21:09] 0xjarix
+zsh
+
+
+[03/25/2025 21:09] _leogold
+switch to bash and run again
+
+
+[03/25/2025 21:09] _leogold
+possible scarb was install in your bash path
+
+
+[03/25/2025 21:11] 0xjarix
+did you have the same error?
+
+
+[03/25/2025 21:12] _leogold
+yes when I was on zsh.
+
+
+[03/25/2025 21:13] 0xjarix
+okay thank you will do that
+
+{Reactions}
+✅ 
+
+[03/26/2025 04:04] tigerfrake
+Had so much trouble with this on windows and just switched to wsl. give it a short if you are on the same OS.
+
+{Reactions}
+✅ 🤣 
+
+[03/26/2025 05:55] 0xaudron
+windows suck😏
+
+{Reactions}
+😂 
+
+[03/26/2025 06:27] tigerfrake
+😂😂
+
+{Reactions}
+😂 (4) 
+
+[03/26/2025 06:51] pascal9476
+Does docs wolf work here ?
+
+{Reactions}
+👍 
+
+[03/26/2025 08:38] 0xjarix
+thank you
+
+{Reactions}
+🫡 
+
+[03/26/2025 12:40] 0xaudron
+Another starknet contest is already queued up after this!
+
+{Reactions}
+🔥 (5) 
+
+[03/26/2025 14:00] skinneeomeje
+What is rest?
+
+{Reactions}
+😂 (3) 
+
+[03/26/2025 15:11] daveylupes
+@Oded Naor | StarkWare do you require coded POCs for Highs?
+
+
+[03/26/2025 15:39] 0xaudron
+out of scope!
+
+{Reactions}
+😂 (2) 
+
+[03/26/2025 18:55] m4k2
+Are the conditions that the operator will check before executing a request the same as those in StarkEx?
+
+
+[03/26/2025 19:28] m4k2
+The codehawks one ? 👀
+
+{Reactions}
+👍 
+
+[03/26/2025 20:29] unique0x0
+Any idea why this is happening
+ ```
+scarb build
+error: failed to open lockfile
+
+Caused by:
+    Read-only file system (os error 30)
+
+
+```
+
+
+[03/26/2025 20:48] vat_ni
+@Jay | C4 @CloudEllie could you weigh in on this? If user a inputs bad parameters abcd into a request, is it "operator" mistake if the same bad parameters are relayed when fulfilling the request? Or is the operator expected to have validated the parameters before attempting to fulfill it?
+
+I.e Are we to assume that operators just pass in whatever parameters are provided by the user, while expecting that the function performs the validation?
+
+{Reactions}
+🔥 👀 (2) 
+
+[03/26/2025 21:39] itsmetechjay
+If this is a question of bringing an issue into scope, take a look at [this section of the judging criteria](https://docs.code4rena.com/awarding/judging-criteria#scope).
+
+> Wardens *may* elect to argue to bring things into scope — either by making the case that an issue poses a more urgent threat than identified or by submitting a medium or high severity finding in code which is out of scope. However, it is up to judges' absolute discretion whether to include these findings and award them, and these issues should include a clear argument as to why the items merit being brought into scope.
+
+{Embed}
+https://docs.code4rena.com/awarding/judging-criteria
+Judging criteria | Code4rena
+
+
+[03/26/2025 21:55] m4k2
+I think, he mean issues seems to be primarily related to the operator's off-chain behavior, which significantly influences on-chain actions. 
+
+In other words, it is essential to understand the checks the operator performs before processing a user request, because 60% of the protocols function are executed by this operator.
+
+
+[03/26/2025 22:11] itsmetechjay
+To get a clear answer about how the project intends for this to work, it's best to ask the customer directly.  They can explain the expected process. 
+
+If you believe that you have fact-based evidence of a vulnerability, you are welcome to submit it.  Judges will review the submission and any sponsor input to determine the validity and severity of the issue.
+
+{Reactions}
+👍 (2) 
+
+[03/26/2025 22:17] m4k2
+I agree, let’s wait the developer answer and precision
+
+
+[03/27/2025 04:48] neutron_sec
+my tests work fine on windows-11 and WSL
+wsl is heavily bloated and consume lot of Ram and cpu
+
+{Attachments}
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/image-C5988.png
+
+{Reactions}
+👍 
+
+[03/27/2025 04:50] neutron_sec
+
+
+{Attachments}
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/image-7A2CE.png
+
+
+[03/27/2025 08:27] __141345__
+Hi I'm trying to understand the oracle price feed, What is the structure of price feed? is it similar to chainlink oracle? such as [starknet BTC]([0x5a4930401bbb1d643ca501640e218fec253b33326f47d139bd025c62a1fbc7f](https://starkscan.co/contract/0x5a4930401bbb1d643ca501640e218fec253b33326f47d139bd025c62a1fbc7f)?
+We'll get the "BTC / USD" price, timestamp, oracle signature, etc?
+
+{Embed}
+https://starkscan.co/contract/0x5a4930401bbb1d643ca501640e218fec253b33326f47d139bd025c62a1fbc7f)?
+Contract  - Starkscan
+
+
+[03/27/2025 09:26] neutron_sec
+who is the operator ? is it a multi-sig or  single entity?
+what about app governor = is it single entity?
+
+
+[03/27/2025 10:24] saint6704
+The one who reduces the attack surface by 90%
+
+{Reactions}
+😂 (7) 🥹 (2) 
+
+[03/27/2025 11:44] neutron_sec
+https://tenor.com/view/shocked-surprised-gasp-what-cat-shock-gif-635629308990545194
+
+{Embed}
+https://tenor.com/view/shocked-surprised-gasp-what-cat-shock-gif-635629308990545194
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/shocked-surprised-8F288.png
+
+
+[03/27/2025 13:04] pascal9476
+real stuff right here 😹
+
+{Reactions}
+😂 (2) 
+
+[03/27/2025 13:37] _killua69_
+Hey man, did you find a fix for this error? I’m stuck with it too
+
+
+[03/27/2025 13:44] marioyordanov
+I installed scarb via asdf, then removed asdf and its references and installed scarb via 1 the script
+
+
+[03/27/2025 13:45] _killua69_
+I'll try that. Thanks for your help
+
+
+[03/27/2025 16:23] m4k2
+duplicate
+
+
+[03/27/2025 16:24] m4k2
+@ishay-starkware could you provide the conditions the operator will execute a request ?
+
+
+[03/27/2025 18:05] onsw11211
+We assume it will eventually process requests (except ones with expiration times set too close to the current time), but we also plan for cases it doesn't, for example by providing the option to cancel a deposit request and receiving the tokens back.
+
+{Reactions}
+👍 (2) 
+
+[03/27/2025 19:02] m4k2
+Is it correct to assume that if a request can be executed on-chain by the operator, it is considered within scope? 
+
+In other words, when a user submits a request, will the operator try to execute it as long as the on-chain execution doesn't revert, or are there additional off-chain checks performed before execution?
+
+This is important because it significantly impacts the scope of the audit and how deeply the researcher will investigate each possible execution flow and edge cases
+
+{Reactions}
+👆 (3) this (2) 
+
+[03/28/2025 08:39] saint6704
+How can I see the traces in the tests ?
+I've tried --vvv but it doesn't work
+
+
+[03/28/2025 08:49] daniel526
+-vvvv
+
+
+[03/28/2025 08:50] saint6704
+not working
+
+
+[03/28/2025 09:42] onsw11211
+Depends. For example, the contract should protect users from the operator draining their funds if the operator key is stolen for a short time period, but we assume that the the governor key which can change the operator's key will not get compromised.
+> In other words, when a user submits a request, will the operator try to execute it as long as the on-chain execution doesn't revert, or are there additional off-chain checks performed before execution?
+Yes, as long as the request is legitimate, for example, a legitimate trade order signed by the user. 
+If the user submits a "bad" request, such as transfer request with a very short expiration time that can cause the tx to revert onchain if the operator submits it, we assume it won't do it.
+If you have specific questions about the operator's trust assumptions, you can ask in a private thread.
+
+{Reactions}
+❤️ (3) 
+
+[03/28/2025 11:48] 0xaudron
+Does that mean the operator is not trusted as per the scope of audit ?
+
+{Reactions}
+👀 (2) 
+
+[03/28/2025 12:30] marioyordanov
+why not share the operator off chain validation for the requests, I guess many people will ask the same question
+
+{Reactions}
+➕ (2) 
+
+[03/28/2025 12:32] 0xaudron
++1
+
+
+[03/28/2025 12:32] thatguyluffy
+Yes, id like to ask the process too
+
+
+[03/28/2025 14:07] marioyordanov
+@Oded Naor | StarkWare @ishay-starkware
+
+
+[03/29/2025 05:27] anmol.eth
+For the operator, will the processing be on a first come, first serve basis? 
+
+This means that if there is a deposit request in the following order 1. alice 2. bob 3. june 4. mary
+
+The processing will be from from 1->4 sequentially?
+
+{Reactions}
+➕ 
+
+[03/29/2025 06:57] saint6704
+It's up to the operator to decide how to process the pending deposits. The contract doesn't enforce any particular order.
+
+{Reactions}
+👍 
+
+[03/29/2025 07:45] 0xbnke
+DM you @Oded Naor | StarkWare
+
+
+[03/30/2025 06:53] onsw11211
+It is trusted up to a limit. We do want to protect users up to a certain degree from an operator that gets his key stolen for example for short time periods.
+
+{Reactions}
+🫡 
+
+[03/30/2025 06:53] onsw11211
+Most likely yer, but this is not verified onchain as part of the contract.
+
+
+[03/30/2025 06:53] onsw11211
+Because it's not part of the contract, and each operator might have different offchain logic.
+
+
+[03/30/2025 06:58] saint6704
+So for the scope of audit should we just consider that all requests are processed FCFS and in order?
+
+
+[03/30/2025 08:28] onsw11211
+Not necessarily. If a user submits an order that can't be matched, for example, there's no reason for the operator not to serve other orders.
+
+{Reactions}
+🫡 
+
+[03/30/2025 10:16] 0xpeter.pan
+@Oded Naor | StarkWare what scenario leads to a deleverage?
+
+I know it's when total_value < 0
+
+What price movement could actually lead to this
+
+
+[03/30/2025 10:43] onsw11211
+You can find an example here: https://docs.starkware.co/starkex/perpetual/deleverage.html#1_the_total_value_of_alices_position_becomes_negative
+
+{Embed}
+https://docs.starkware.co/starkex/perpetual/deleverage.html
+The deleverage flow :: StarkEx Documentation
+The deleverage flow | StarkWare: Bringing scalability, security, and privacy to a blockchain near you.
+
+
+[03/31/2025 06:59] skinneeomeje
+How can one create a position ID in this protocol
+
+
+[03/31/2025 07:19] m4k2
+new_position in the component position
+
+{Reactions}
+✅ (4) 
+
+[03/31/2025 19:27] marioyordanov
+how user buys synthetic tokens?
+
+
+[03/31/2025 21:33] 33audits
+But the idea is that the operator has an incentive to match orders as best they can correct? Regardless of when they were submitted?
+
+
+[04/01/2025 03:13] oceansky
+hi @Oded Naor | StarkWare , dmed u in PT, thanks
+
+
+[04/01/2025 05:08] onsw11211
+The trade flow
+
+
+[04/01/2025 05:08] noahfig.eth
+How is position_id determined ? If user wants to make a deposit, how does he know what position_id to submit it with?
+
+
+[04/01/2025 05:08] onsw11211
+We don't assume too much about the matching engine.
+
+
+[04/01/2025 05:09] onsw11211
+You can assume the operator will assign him some position ID to make the deposit to and will register it onchain.
+
+
+[04/01/2025 08:07] neutron_sec
+any docs  specific  to starknet sequencer and prover?
+
+
+[04/01/2025 08:15] onsw11211
+For Starknet in general? I wouldn't focus on them for the competition, but Starknet's official docs are here: https://docs.starknet.io/
+
+{Embed}
+https://docs.starknet.io/
+Starknet Documentation
+Reference documentation for developers building on Starknet.
+
+{Reactions}
+👍 (2) 
+
+[04/01/2025 09:52] 0xpeter.pan
+Does this contest require mandatory POC??
+
+@Oded Naor | StarkWare
+
+
+[04/01/2025 10:00] bytes032
+no
+
+{Reactions}
+👍 (3) 
+
+[04/01/2025 14:02] 0xaudron
+So operations heavily rely on operators👀
+
+{Reactions}
+✅ 
+
+[04/02/2025 01:36] neutron_sec
+First step: Request with signature verification
+Second step: Operator executes withdrawal
+Prevents unauthorized withdrawals
+
+
+[04/02/2025 01:41] neutron_sec
+@Oded Naor | StarkWare which asset pair of USDC could be with?
+for example BTC/USDC ?
+
+Sol, Eth , dodge ?
+i woud like to know the pairs?
+or it is just limied to ETH/USDC , BTC/USDC ?
+
+
+[04/02/2025 06:34] onsw11211
+If USDC is used as the collateral, the pairs have to be with it. 
+What synthetic assets the app governor chooses to list, is up to him. 
+You can take a look at big perps exchanges like HyperLiquid and centralized exchanges to see common listed assets.
+
+{Reactions}
+👍 (2) 
+
+[04/02/2025 07:36] tobi0x18
+Where can I find `leverage` in the codebase?
+
+
+[04/02/2025 07:39] kirkeelee
+It is the amount of synthetic assets you own in respect to the collateral amount.
+
+{Reactions}
+👍 
+
+[04/02/2025 07:40] tobi0x18
+Thanks for your reply. So it is the ratio between the collateral and synthetic assets in the position?
+
+
+[04/02/2025 07:42] kirkeelee
+It can be said like that for simplicity but the calculations are a bit more complex. Check the tvtr calculations to see in more detail.
+
+{Reactions}
+❤️ 👍 
+
+[04/04/2025 07:12] ifex445
+very complex
+
+
+[04/04/2025 18:33] 0x73696d616f
+Hi @Oded Naor | StarkWare, dmed
+
+{Reactions}
+👀 (2) 
+
+[04/05/2025 02:32] saint6704
+🤣  No please 🤣 
+Leave this one for us
+
+{Reactions}
+😂 (16) 
+
+[04/05/2025 07:11] yesofcourse_
+https://tenor.com/view/the-office-michael-scott-no-god-please-gif-15249894192487756498
+
+{Embed}
+https://tenor.com/view/the-office-michael-scott-no-god-please-gif-15249894192487756498
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/the-office-michael-scott-E5383.png
+
+{Reactions}
+😂 (8) 
+
+[04/05/2025 09:04] 0xaudron
+Let’s compete for $50k pool guys
+
+
+[04/05/2025 19:34] evokid
+I believe so..
+
+{Reactions}
+➕ 
+
+[04/09/2025 02:10] oceansky
+hi @Oded Naor | StarkWare , dmed u kindly check thanks
+
+
+[04/09/2025 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺Wardens The **Starknet Perpetual** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks.
+
+{Reactions}
+👍🏻 (2) 
+
+[04/16/2025 03:48] joesepherus
+Hello, I am not sure where to discuss this as I am new to C4. I saw that six other reports on the same division-by-zero issue in is_fair_deleverage were marked as "Sufficient", while mine was marked as "Invalid".
+
+My report covers the same bug, but also digs into the specific reason the zero denominator slips past the assert_healthy_or_healthier guard (due to the early return on PositionState::Healthy). It also recommends a safer mitigation (adding a check instead of removing the function), which the team may prefer.
+
+Can this at least be reconsidered as a duplicate and marked Sufficient like the others? Thanks!
+Valid submission: S-25. My submission: S-521
+
+
+[04/17/2025 06:31] mansa11
+If there’s a POC in a report, what other proof is needed to show sufficient quality as a POC is the highest source of truth. 
+
+If a researcher correctly identifies a root cause, impact with a POC, what else do judges want? Essay writing reports?
+
+{Reactions}
+😂 (4) 🔥 
+
+[04/17/2025 18:29] daveylupes
+I’m not sure if I’m allowed to send a link in here, if not please pardon me.
+
+I came across one resource by @Alex The Entreprenerd where he makes a good remark about writing sufficient PoC. Here’s the link, I’d suggest you watch all of it.
+
+https://youtu.be/oY9Eu1l-C_w?si=7nnzf2uInNdWVJta
+
+{Reactions}
+cheers_badger (2) 💜 (2) 
+
+[04/19/2025 03:40] crunter_
+Hello everyone, I'm also new in C4. Can we expect comments or feedback from the judge after a submission is marked as invalid?
+
+very curious to know the reason why S-401 was invalidated. Moreover, based on the Quality section of the C4 docs, I'm having a hard time trying to find out why its considered insufficient. since non-SR cannot comment/appeal, some feedback  would be more than great
+
+{Reactions}
+😢 
+
+[04/19/2025 06:54] kriko.eth
+I havent participated in C4 for a while, is there still the post judging QA or how does it work now? 😄
+
+{Reactions}
+👍 
+
+[04/19/2025 08:47] iamandreiski
+Another question from my end, all of my reports were made invalid today/yesterday at once, considering I have duplicates of valid findings (findings which are still valid) and my duplicates were marked valid prior to this, so is this some kind of a mistake or a bug possibly?
+
+
+[04/19/2025 10:39] joesepherus
+Same thing happened to me man. The duplicates are valid but mine got invalidated in judging phase. I can only suspect bad wording of the submission otherwise don't know really. The root cause and impact is the same as in the duplicates, strange. No comment on the submission either so 🤷‍♂️
+
+
+[04/19/2025 16:01] kriko.eth
+I can not comment under my issue, but it was invalidated because of being duped with another issue, but there is a poc which proves that a user can deposit assets, trade, and instantly withdraw more assets then deposited 😄
+
+{Reactions}
+👍🏻 
+
+[04/19/2025 16:06] kriko.eth
+also it seems it has been duped incorrectly, can somebody look at S-653? It seems like a duplicate of S-645 😄
+
+
+[04/19/2025 16:13] kriko.eth
+Also I didn’t get any feedback on why S-677 is invalid 😅
+
+
+[04/19/2025 18:46] mansa11
+Same with S-377, S-310,S-470 as well
+
+
+[04/19/2025 18:52] emmac002
+My report is S-419 which is a duplicate of krikolkk's S-653, it also provides a POC to prove that a user can withdraw more assets than deposited and could cause the protocol loss. There is no feedback from the judge to show why our reports are invalid.
+
+
+[04/19/2025 18:57] 0xni8mare
+We have similar issues too. [S-413](https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/S-413) should be a dup of [F-33](https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/F-33). We have a POC too. Can somebody from C4 or the judge comment on these problems?
+
+
+[04/19/2025 18:59] 0xni8mare
+We are not able to comment too
+
+
+[04/19/2025 22:04] 0xbnke
+I have similar one too, [S-107](https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/S-107)  it's a dupe of  [F-33](https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/F-33)
+
+
+[04/19/2025 22:14] 0xbnke
+And this one too, [180](https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/S-180) it's a dupe of [F-34](http://code4rena.com/audits/2025-03-starknet-perpetual/submissions/F-34)
+
+
+[04/19/2025 22:23] 0xbnke
+@Jay | C4 @thebrittfactor | C4
+
+
+[04/19/2025 23:31] 0xgritty
+S-491 should be duped to F-33, please check that as well.
+
+
+[04/20/2025 01:14] oceansky
+Just got back to c4 for a long time  but normally there should be a reasoning on why it was invalidated by the judge.
+
+
+[04/20/2025 01:15] enigmaticauditor2
+I noticed Post Judging QA isn't active yet but you cannot comment on submissions
+
+
+[04/20/2025 01:15] enigmaticauditor2
+I mean it is active
+
+
+[04/20/2025 01:27] banditx0x
+S-382 is a duplicate of F-30, not sure why it got de-duped
+
+
+[04/20/2025 03:18] mansa11
+Whoever the judge for this contest is -
+
+- S-310 is a dup of finding F-33
+- S-470 is a dup of F-16 and 
+- S-377 is a dup of F-40. 
+
+They were packed wrongly together and invalidated when the wrong main issue was removed. 
+
+F-88 is also a  valid issue as confirmed by @0x73696d616f 
+Thanks for judging and well done.
+
+@kartoonjoy | C4🎇🎇 @Jay | C4 @thebrittfactor | C4
+
+
+[04/20/2025 05:23] 0xbnke
+@mansa11
+
+
+[04/20/2025 05:24] 0xbnke
+@mansa11
+
+
+[04/20/2025 07:13] pascal9476
+C4  dc about to start getting messy 😂
+
+{Reactions}
+4739_Skeletor (2) 😅 
+
+[04/20/2025 08:11] kodosec
+same thing happened to multiple of my issues - duped but mine were invalidated for no apparent reason/explanation
+
+
+[04/20/2025 08:54] enami_el
+Same with this one
+
+https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/S-305
+
+
+[04/20/2025 12:17] banditx0x
+[F-114](https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/F-114) is valid. With the `_validate_imposed_reduction` check done on the person doing deleveraging, it is impossible for them to perform deleverages unless they first do a trade to obtain an opposite delta than the position the are deleveraging. The restrictions for `_imposed_reduction` should only apply to the deleveraged position, while the check that is applied to the person doing the deleveraging should be the same as a normal trade, namely that they are `healthy_or_healthier`.
+
+
+[04/20/2025 12:31] evokid
+Unfortunately me too. I am filtering them. I am not sure how this is possible...
+
+
+[04/20/2025 13:18] joesepherus
+Glad there is people with the similar problem in this audit, high five everybody. I was just told in the chat channel to "get good" haha 😜
+
+{Reactions}
+😂 
+
+[04/20/2025 14:27] kartoonjoy
+Hi all. This is a holiday weekend and our team is taking some time with family. Please no more tagging the entire team today. =  )
+
+Also, please review this post again. Thanks!
+
+https://discord.com/channels/810916927919620096/810936719003090974/1356599510331293788
+
+{Reactions}
+💜 (4) 
+
+[04/22/2025 19:52] emmac002
+I notice that the timeline has been updated from post-judging QA to reporting in progress. Does it mean the results are finalised or that is an auto status update after 48 hours?
+
+{Reactions}
+🆙 (3) 
+
+[04/23/2025 15:08] anmol.eth
+I don't understand the process here why all our are findings are invalid, without any comments. Is this by default?
+
+
+[04/23/2025 15:50] thebrittfactor
+It may be ideal to review [this post](https://discord.com/channels/810916927919620096/810931711609143326/1364245691374895224).
+
+
+[04/23/2025 20:36] mansa11
+Is c4 now operating Aristocracy?
+
+
+[04/23/2025 21:16] crunter_
+unfortunately, there are cases when those Docs sections just raise more questions than answers on the reason why a submission was invalidated. Cases where not only signal is affected but relevant findings, even possible unique findings are not taken into account. Feedback would be very beneficial for everyone in those cases. Personally, I would love some feedback in one of my affected submissions, which is a good example of the above
+
+{Reactions}
+👆 (3) this 
+
+[04/24/2025 06:00] evokid
+Am not sure, but recently it gets me frustrated. I can't understand the idea or the concept of ignoring unique issues as they invalidated without any comment. I spent long time in this platform. This is not cool.
+
+{Reactions}
+👍 (2) 
+
+[04/24/2025 06:13] mansa11
+For real man. It’s really annoying. So much effort spent on this contest wasted 🤦🏼‍♂️
+
+{Reactions}
+👍 (2) 😭 
+
+[04/24/2025 06:15] evokid
+I feel sorry and bad for every one who did huge efforts in this contest but the situation didn't go along for them, including me.
+
+{Reactions}
+😭 (3) 👍 
+
+[04/24/2025 06:34] daniel526
+i need hugs tbh 😭
+
+
+[04/24/2025 07:13] saint6704
+There are valid issues that aren't even duped properly let alone edge case unique issues!
+
+{Reactions}
+🙌🏻 
+
+[04/24/2025 07:20] evokid
+Sadly... https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/S-577
+
+
+[04/24/2025 07:26] saint6704
+That's just one instance there are many others too
+Total waste of time
+
+{Reactions}
+👍🏻 (2) 
+
+[04/24/2025 08:38] mansa11
+Like… this should be the least of issues
+
+
+[04/25/2025 12:51] 0xpeter.pan
+Why don't we have a dashboard for review like cantina??
+
+This is my first time on C4 and this is really messy
+
+
+[04/28/2025 06:20] anmol.eth
+@LSDan Hi can you look at https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/F-282
+This should be a dup of F-33
+
+{Reactions}
+😢 
+
+[04/28/2025 10:29] anmol.eth
+@LSDan we received the comment on a report saying this  is of low quality. Can you please tell us why this is low quality. We have clearly identified the root cause, impact and formed a clear report with POC. what else is needed ?
+
+
+[04/28/2025 10:49] blckhv
+Isn't [this comment](https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/S-413?commentParent=oe3cA24DUsn) by the judge a violation of fair judgment and proper evaluation of issue quality?
+I'm not arguing whether this particular issue is valid or not, but the quality of the report is clearly sufficient, as it meets all the criteria of what we understand makes a good report.
+My concern is more about the judging overall in this contest:
+
+- ambiguous comments
+- random links to C4 docs without any explanation of how they apply to the particular reports 
+- copy-paste responses to fair escalations from other wardens
+
+{Reactions}
+👍 (2) 👆🏻 
+
+[04/28/2025 11:04] anmol.eth
+Most of the report have comments like this. We all spend our precious 21 days on this and not getting what we rightlyfull deserve is just brutal. I'm not trying to beg here but it is our right to know exactly why issue is invalid or low quality. C4 team should review this contest once again and check if judging is properly done @CloudEllie @thebrittfactor | C4 @Jay | C4
+
+
+[04/28/2025 11:07] saint6704
+Warden clearly identified the bug and added a PoC still getting insufficient quality report isn't really justified
+
+
+[04/28/2025 11:22] tigerfrake
+😁😁 It's about time I applied to be a judge. I've heard your cries, lmao
+
+{Reactions}
+🤣 
+
+[04/28/2025 11:39] enami_el
+Hello
+Has the PJQA finished ?
+
+
+[04/28/2025 14:38] mansa11
+The judging is obviously not properly done!
+
+
+[04/28/2025 14:38] mansa11
+Hi. I think There’s also a violation of good judging policy which you need to look into as well
+
+
+[04/28/2025 21:01] itsmetechjay
+🤑 🎉  Awards for **Starknet Perpetual**:
+
+$47,090.92 USDC » @hakunamatata
+$26,332.70 USDC » @handsomegiraffe
+$9,397.98 USDC » @m4k2
+$8,161.96 USDC » @crunter
+$8,161.96 USDC » @Bauchibred
+$8,138.04 USDC » @evta
+$5,536.89 USDC » @alexxander
+$3,822.21 USDC » SBSecurity (@blckhv and @Slavcheww)
+$3,013.19 USDC » @montecristo
+$3,004.72 USDC » @krikolkk
+$2,562.27 USDC » @__141345__
+$2,364.15 USDC » 0xAlix2 (@a_kalout and @ali_shehab)
+$1,753.25 USDC » CODESPECT (@Talfao | CODESPECT and @Kalogerone)
+$1,753.25 USDC » @zzykxx
+$1,729.33 USDC » @Hueber
+$1,283.86 USDC » @0xNirix
+$1,271.90 USDC » @harshw
+$1,259.94 USDC » @kanra
+$473.68 USDC » @Bigsam
+$442.45 USDC » @oakcobalt
+$442.45 USDC » @b0g0
+$442.45 USDC » @trachev
+$442.45 USDC » @said
+$418.53 USDC » VulnSeekers (@LeoGold and @Ephraim)
+$418.53 USDC » @Stonejiajia
+$418.53 USDC » @Olugbenga
+$315.79 USDC » @Sparrow
+$234.45 USDC » @newspace
+$31.09 USDC » EPSec (@0x539.eth | ChainDefenders and @petarP1998)
+$23.92 USDC » @0xasen
+$23.92 USDC » @aldarion
+$23.92 USDC » @13u9
+$23.92 USDC » @klau5
+$23.92 USDC » @Brene
+$23.92 USDC » @0x73696d616f
+$23.92 USDC » @peanuts
+$23.92 USDC » @0xSolus
+$23.92 USDC » HashNodeLabs (@mahakal and @Tigerfrake)
+$23.92 USDC » @kirkeelee
+$23.92 USDC » @Eva
+$17.94 USDC » @0xhiros
+
+🏁 Findings summary
+--------------------------------------—
+2 High risk findings
+5 Med risk findings
+749 wardens participated
+
+Top Hunter: hakunamatata
+Top Gatherer: handsomegiraffe
+Top QA report: Bigsam
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+⚠️ Awardees, be sure to [complete your tax reporting info](https://docs.code4rena.com/awarding/incentive-model-and-awards/awarding-process#tax-information-for-code4rena-contributors-wardens-judges-etc) if you haven't already. This must be completed within 30 days (i.e. before Wednesday, 28 May 2025) to receive your award distribution for this audit.
+
+{Reactions}
+👎 (11) ❌ (4) 👍 
+
+[04/28/2025 21:05] 0x73696d616f
+think the contest ended without my submissions being reviewed in the PJQA?
+example https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/S-238
+cc @Jay | C4
+
+
+[04/28/2025 21:07] slavcheww
+not only yours
+
+{Reactions}
+😢 (2) 
+
+[04/28/2025 21:08] slavcheww
+https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/F-38
+
+
+[04/28/2025 21:09] slavcheww
+the comment from the validator has nothing to do with the issue
+
+
+[04/28/2025 21:10] itsmetechjay
+All comments made during PJQA were reviewed by the judge.
+
+
+[04/28/2025 21:11] 0x73696d616f
+but no feedback was given?
+
+
+[04/28/2025 21:12] mansa11
+Just forget about it. This is the worse contest judging I’ve seen on c4
+
+{Reactions}
+👍 (15) 
+
+[04/28/2025 21:12] slavcheww
+can say the same, even that I'm inside the top 10
+
+{Reactions}
+👍 (5) 
+
+[04/28/2025 21:13] crunter_
+same here, top 5
+
+{Reactions}
+👍 (5) 
+
+[04/28/2025 21:16] saint6704
+Completely disappointed with this contest results
+
+{Reactions}
+👍 (9) ✅ (6) 
+
+[04/28/2025 22:36] evokid
+I'm ashamed of these results. Thumb up if you think so too.
+
+{Reactions}
+👍🏻 (19) 
+
+[04/28/2025 23:18] joesepherus
+First audit I ever participated in C4 and it leaves a very bad taste in my mouth, hope the next ones are not so bad.
+
+
+[04/29/2025 00:06] 0xbnke
+
+
+{Attachments}
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/Screenshot_2025-04-29_at_8.05.40_AM-76B02.png
+
+
+[04/29/2025 00:32] evokid
+It's really non sense when the judge reply for one issue as reasoning why they invalidated all my issues. Why the judge doesn't reply every issue like a professional and exactly take time for each. Instead of collective punishment because of one issue. This is clearly not in auditors' interest at all.
+
+{Attachments}
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/IMG_20250429_083004-AA141.jpg
+
+{Reactions}
+😢 (12) 
+
+[04/29/2025 01:06] anmol.eth
+https://tenor.com/view/confused-cat-confused-math-aint-mathing-huh-cat-gif-883992111571860857
+
+{Embed}
+https://tenor.com/view/confused-cat-confused-math-aint-mathing-huh-cat-gif-883992111571860857
+Code4rena - ARCHIVE-PUBLIC - starknet-perp-mar [1350163782030332088].txt_Files/confused-cat-confused-93608.png
+
+
+[04/29/2025 02:00] oceansky
+it seems the judge focuses on "value to sponsor", did the sponsor commented on why it is invalid?
+
+
+[04/29/2025 02:37] ak19966
+is there a way to filter only the valid issues ?
+
+
+[04/29/2025 03:34] evokid
+For that one yes, but unfortunately not for some other issues which has no comment from sponsors neither from the judge. I believe it's a lack of process. C4 should make a step, otherwise this is going into nothing.
+
+https://code4rena.com/audits/2025-03-starknet-perpetual/submissions/F-93
+
+{Reactions}
+👍 
+
+[04/29/2025 03:44] evokid
+Assigning the judgment to sponsors it's just not a good idea, while the judge actually judged few issues and decided that they are M while the sponsors considered as Low.
+
+
+[04/29/2025 05:29] kriko.eth
+i still dont understand how an issue where ppl deposit usd and instantly withdraw more can be invalid but idk, guess i understood the app wrong and this is an airdrop protocol 😅
+
+{Reactions}
+😂 (16) 
+
+[04/29/2025 06:34] daveylupes
+Congratulations buddy @hakunamatata
+
+{Reactions}
+❤️ 
+
+[04/29/2025 12:18] anmol.eth
+I feel bad for protocol team. When the funds get drained they will look back to these chats and regret
+
+{Reactions}
+😂 
+
+[04/29/2025 14:53] 0xhiros
+I've found one high risk issue, but why is my award just $17?
+I want someone to explain about the award calculation
+
+
+[04/29/2025 14:56] l9baldur
+https://docs.code4rena.com/awarding This one helped me to understand the awards calculation
+
+{Embed}
+https://docs.code4rena.com/awarding
+Awarding | Code4rena
+Code4rena's incentive model and awarding algorithm
+
+
+[04/29/2025 15:11] 0xhiros
+Hmm, I cannot understand yet.
+How is it possible to release $17 for high risk....
+
+
+[04/29/2025 15:11] loptuskr
+N/rewards
+
+
+[04/29/2025 15:13] loptuskr
+need to find solo issues to get a good rewars
+
+
+[04/29/2025 17:31] cd_pandora
+Lambo money
+
+{Reactions}
+😆 
+
+[04/29/2025 19:04] kriko.eth
+the more people find an issue the less points it has overall, then it’s also divided by the number of ppl who found it
+
+the formula is 0.9^(n-1) if im not mistaken which means that a high with 30 duplicates is worth ~0.42 points (~0.014 for each)  while a medium with 0 dups will be worth 3 pts (which means 219x more for the solo m than the h)
+
+
+[05/04/2025 04:07] evokid
+Hey folks, I had a thought maybe a suggestion here, if you would like to support this, go ahead and thumb up or green check ✅ : https://discord.com/channels/810916927919620096/824698635815223316/1368438230529212539
+
+
+[05/05/2025 08:25] emmac002
+I'm completely shocked — I just got back from holiday and saw that the results are out, but many appeals still have no feedback from the judge and appear to be in progress 😂
+
+{Reactions}
+🥲 
+
+[06/02/2025 21:30] C4
+ℹ️ This channel is pending archive.   As a result, any private threads will be permanently deleted 06/11/2025 21:13. Please make sure to grab anything you might need before then.
+
+
+==============================================================
+Exported 250 message(s)
+==============================================================
